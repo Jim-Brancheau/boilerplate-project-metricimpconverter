@@ -42,20 +42,20 @@ suite("convertHandler", function () {
       assert.strictEqual(unit, "Error: invalid unit");
     });
     test("convertHandler should return the correct return unit for each valid input unit.", function () {
-      assert.strictEqual(converter.getReturnUnit("123mi"), "km");
-      assert.strictEqual(converter.getReturnUnit("123km"), "mi");
-      assert.strictEqual(converter.getReturnUnit("123lbs"), "kg");
-      assert.strictEqual(converter.getReturnUnit("123kg"), "lbs");
-      assert.strictEqual(converter.getReturnUnit("123gal"), "l");
-      assert.strictEqual(converter.getReturnUnit("123L"), "gal");
+      assert.strictEqual(converter.getReturnUnit("mi"), "km");
+      assert.strictEqual(converter.getReturnUnit("km"), "mi");
+      assert.strictEqual(converter.getReturnUnit("lbs"), "kg");
+      assert.strictEqual(converter.getReturnUnit("kg"), "lbs");
+      assert.strictEqual(converter.getReturnUnit("gal"), "L");
+      assert.strictEqual(converter.getReturnUnit("L"), "gal");
     });
     test("convertHandler should correctly return the spelled-out string unit for each valid input unit.", function () {
-      assert.strictEqual(converter.getReturnUnit("mi"), "miles");
-      assert.strictEqual(converter.getReturnUnit("km"), "kilometers");
-      assert.strictEqual(converter.getReturnUnit("lbs"), "pounds");
-      assert.strictEqual(converter.getReturnUnit("kg"), "kilograms");
-      assert.strictEqual(converter.getReturnUnit("gal"), "gallons");
-      assert.strictEqual(converter.getReturnUnit("l"), "liters");
+      assert.strictEqual(converter.spellOutUnit("mi"), "miles");
+      assert.strictEqual(converter.spellOutUnit("km"), "kilometers");
+      assert.strictEqual(converter.spellOutUnit("lbs"), "pounds");
+      assert.strictEqual(converter.spellOutUnit("kg"), "kilograms");
+      assert.strictEqual(converter.spellOutUnit("gal"), "gallons");
+      assert.strictEqual(converter.spellOutUnit("l"), "liters");
     });
   });
   suite("Conversion", function () {
