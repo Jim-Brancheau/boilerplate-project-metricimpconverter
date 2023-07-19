@@ -45,8 +45,6 @@ function ConvertHandler() {
 
   this.getReturnUnit = function (initUnit) {
     let result;
-    console.log("initUnit: ", initUnit);
-    console.log("initUnit.toLowerCase(): ", initUnit.toLowerCase());
     switch (initUnit.toLowerCase()) {
       case "mi":
         result = "km";
@@ -105,7 +103,29 @@ function ConvertHandler() {
     const miToKm = 1.60934;
     let result;
 
-    return result;
+    switch (initUnit.toLowerCase()) {
+      case "mi":
+        result = initNum * miToKm;
+        break;
+      case "km":
+        result = initNum / miToKm;
+        break;
+      case "lbs":
+        result = initNum * lbsToKg;
+        break;
+      case "kg":
+        result = initNum / lbsToKg;
+        break;
+      case "gal":
+        result = initNum * galToL;
+        break;
+      case "l":
+        result = initNum / galToL;
+        break;
+      default:
+        result = "";
+    }
+    return Number(result.toFixed(5));
   };
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
