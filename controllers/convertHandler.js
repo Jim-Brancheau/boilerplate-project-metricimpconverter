@@ -7,7 +7,6 @@ function ConvertHandler() {
     let matches = input.match(matcher);
     if (matches) {
       var number = matches[1];
-      console.log("number: ", number);
       if (number === "") {
         number = "1";
       }
@@ -34,7 +33,7 @@ function ConvertHandler() {
       var unit = matches[2];
     }
 
-    if (validInputUnits.includes(unit)) {
+    if (validInputUnits.includes(unit.toLowerCase())) {
       result = unit;
     } else {
       result = "Error: invalid unit";
@@ -123,14 +122,20 @@ function ConvertHandler() {
         result = initNum / galToL;
         break;
       default:
-        result = "";
+        result = "Error: invalid unit";
     }
-    return Number(result.toFixed(5));
+    try {
+      return Number(result.toFixed(5));
+    } catch {
+      return result;
+    }
   };
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
     let result;
-
+    result = `${initNum} ${this.spellOutUnit(
+      initUnit
+    )} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
     return result;
   };
 }

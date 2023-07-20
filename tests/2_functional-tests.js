@@ -15,7 +15,14 @@ suite("Functional Tests", function () {
         .keepOpen()
         .get("/convert?input=10L")
         .end(function (err, res) {
-          assert.equal(res.text, "10 liters converts to 2.64172 gallons");
+          assert.isObject(res.body);
+          assert.deepEqual(res.body, {
+            initNum: 10,
+            initUnit: "L",
+            returnNum: 2.64172,
+            returnUnit: "gal",
+            string: "10 liters converts to 2.64172 gallons",
+          });
           done();
         });
     });
@@ -26,6 +33,7 @@ suite("Functional Tests", function () {
         .get("/convert?input=32g")
         .end(function (err, res) {
           assert.equal(res.text, "Error: invalid unit");
+          done();
         });
     });
     test("GET /convert invalid number 3/7.2/4kg", function (done) {
@@ -35,6 +43,7 @@ suite("Functional Tests", function () {
         .get("/convert?input=3/7.2/4kg")
         .end(function (err, res) {
           assert.equal(res.text, "Error: invalid number");
+          done();
         });
     });
     test("GET /convert invalid number AND unit 3/7.2/4kilomegagram", function (done) {
@@ -43,7 +52,8 @@ suite("Functional Tests", function () {
         .keepOpen()
         .get("/convert?input=3/7.2/4kilomegagram")
         .end(function (err, res) {
-          assert.equal(res.text, "Error: invalid number and unit");
+          assert.equal(res.text, "Error: invalid number Error: invalid unit");
+          done();
         });
     });
     test("GET /convert no number kg", function (done) {
@@ -52,7 +62,14 @@ suite("Functional Tests", function () {
         .keepOpen()
         .get("/convert?input=kg")
         .end(function (err, res) {
-          assert.equal(res.text, "1 kilograms converts to 2.20462 pounds");
+          assert.deepEqual(res.body, {
+            initNum: 1,
+            initUnit: "kg",
+            returnNum: 2.20462,
+            returnUnit: "lbs",
+            string: "1 kilograms converts to 2.20462 pounds",
+          });
+          done();
         });
     });
   });
