@@ -8,19 +8,19 @@ suite("convertHandler", function () {
   suite("Input Validation", function () {
     test("convertHandler should correctly read a whole number input.", function () {
       let num = converter.getNum("123mi");
-      assert.strictEqual(num, "123");
+      assert.strictEqual(num, 123);
     });
     test("convertHandler should correctly read a decimal number input.", function () {
       let num = converter.getNum("12.3mi");
-      assert.strictEqual(num, "12.3");
+      assert.strictEqual(num, 12.3);
     });
     test("convertHandler should correctly read a fractional input.", function () {
       let num = converter.getNum("1/2mi");
-      assert.strictEqual(num, (1 / 2).toString());
+      assert.strictEqual(num, 1 / 2);
     });
     test("convertHandler should correctly read a fractional input with a decimal.", function () {
       let num = converter.getNum("1/2.1mi");
-      assert.strictEqual(num, (1 / 2.1).toString());
+      assert.strictEqual(num, 1 / 2.1);
     });
     test("convertHandler should correctly return an error on a double-fraction (i.e. 3/2/3).", function () {
       let num = converter.getNum("1/2/3mi");
@@ -28,7 +28,7 @@ suite("convertHandler", function () {
     });
     test("convertHandler should correctly default to a numerical input of 1 when no numerical input is provided.", function () {
       let num = converter.getNum("mi");
-      assert.strictEqual(num, "1");
+      assert.strictEqual(num, 1);
     });
     const validInputUnits = ["gal", "l", "lbs", "kg", "mi", "km"];
     test("convertHandler should correctly read each valid input unit.", function () {
