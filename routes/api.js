@@ -1,10 +1,10 @@
 "use strict";
 const ConvertHandler = require("../controllers/convertHandler.js");
 
-module.exports = function (app) {
+module.exports = function(app) {
   let convertHandler = new ConvertHandler();
 
-  app.get("/convert", function (req, res) {
+  app.get("/api/convert", function(req, res) {
     let data = {};
     if (req.query && req.query.input) {
       let initNum = convertHandler.getNum(req.query.input);
