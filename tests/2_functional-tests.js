@@ -19,7 +19,7 @@ suite("Functional Tests", function () {
           assert.deepEqual(res.body, {
             initNum: 10,
             initUnit: "L",
-            returnNum: "2.64172",
+            returnNum: 2.64172,
             returnUnit: "gal",
             string: "10 liters converts to 2.64172 gallons",
           });
@@ -65,7 +65,7 @@ suite("Functional Tests", function () {
           assert.deepEqual(res.body, {
             initNum: 1,
             initUnit: "kg",
-            returnNum: "2.20462",
+            returnNum: 2.20462,
             returnUnit: "lbs",
             string: "1 kilograms converts to 2.20462 pounds",
           });

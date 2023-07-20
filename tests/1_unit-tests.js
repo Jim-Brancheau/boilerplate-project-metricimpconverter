@@ -2,7 +2,7 @@ const chai = require("chai");
 const assert = chai.assert;
 const ConvertHandler = require("../controllers/convertHandler");
 
-suite("convertHandler", function () {
+suite("Unit Tests", function () {
   const converter = new ConvertHandler();
 
   suite("Input Validation", function () {
@@ -30,7 +30,7 @@ suite("convertHandler", function () {
       let num = converter.getNum("mi");
       assert.strictEqual(num, 1);
     });
-    const validInputUnits = ["gal", "l", "lbs", "kg", "mi", "km"];
+    const validInputUnits = ["gal", "L", "lbs", "kg", "mi", "km"];
     test("convertHandler should correctly read each valid input unit.", function () {
       validInputUnits.forEach((validUnit) => {
         let unit = converter.getUnit("46" + validUnit);
@@ -60,23 +60,23 @@ suite("convertHandler", function () {
   });
   suite("Conversion", function () {
     test("convertHandler should correctly convert gal to L.", function () {
-      assert.strictEqual(converter.convert(5, "gal"), "18.92705");
+      assert.strictEqual(converter.convert(5, "gal"), 18.92705);
     });
     test("convertHandler should correctly convert L to gal.", function () {
-      assert.strictEqual(converter.convert(5, "l"), "1.32086");
+      assert.strictEqual(converter.convert(5, "l"), 1.32086);
     });
 
     test("convertHandler should correctly convert mi to km.", function () {
-      assert.strictEqual(converter.convert(5, "mi"), "8.0467");
+      assert.strictEqual(converter.convert(5, "mi"), 8.0467);
     });
     test("convertHandler should correctly convert km to mi.", function () {
-      assert.strictEqual(converter.convert(5, "km"), "3.10686");
+      assert.strictEqual(converter.convert(5, "km"), 3.10686);
     });
     test("convertHandler should correctly convert lbs to kg.", function () {
-      assert.strictEqual(converter.convert(5, "lbs"), "2.26796");
+      assert.strictEqual(converter.convert(5, "lbs"), 2.26796);
     });
     test("convertHandler should correctly convert kg to lbs.", function () {
-      assert.strictEqual(converter.convert(5, "kg"), "11.02312");
+      assert.strictEqual(converter.convert(5, "kg"), 11.02312);
     });
   });
 });

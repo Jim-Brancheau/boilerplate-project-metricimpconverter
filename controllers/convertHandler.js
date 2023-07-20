@@ -36,8 +36,10 @@ function ConvertHandler() {
     if (validInputUnits.includes(unit.toLowerCase())) {
       if (unit.toLowerCase() === "l") {
         result = unit.toUpperCase();
+      } else {
+        result = unit.toLowerCase();
       }
-      result = unit;
+
     } else {
       result = "Error: invalid unit";
     }
@@ -128,7 +130,7 @@ function ConvertHandler() {
         result = "Error: invalid unit";
     }
     try {
-      return Number(result.toFixed(5)).toString();
+      return Number(result.toFixed(5));
     } catch {
       return result;
     }
