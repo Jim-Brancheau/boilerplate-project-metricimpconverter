@@ -34,6 +34,9 @@ function ConvertHandler() {
     }
 
     if (validInputUnits.includes(unit.toLowerCase())) {
+      if (unit.toLowerCase() === "l") {
+        result = unit.toUpperCase();
+      }
       result = unit;
     } else {
       result = "Error: invalid unit";
