@@ -10,7 +10,7 @@ function ConvertHandler() {
       if (number === "") {
         number = "1";
       }
-      result = Number(number);
+      result = Number(number).toString();
     }
 
     if (number.includes("/")) {
@@ -19,7 +19,7 @@ function ConvertHandler() {
         result = "Error: invalid number";
       } else {
         number = fraction[0] / fraction[1];
-        result = Number(number);
+        result = Number(number).toString();
       }
     }
     return result;
@@ -125,7 +125,7 @@ function ConvertHandler() {
         result = "Error: invalid unit";
     }
     try {
-      return Number(result.toFixed(5));
+      return Number(result.toFixed(5)).toString();
     } catch {
       return result;
     }
