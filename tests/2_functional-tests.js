@@ -13,7 +13,7 @@ suite("Functional Tests", function () {
       chai
         .request(server)
         .keepOpen()
-        .get("/convert?input=10L")
+        .get("/api/convert?input=10L")
         .end(function (err, res) {
           assert.isObject(res.body);
           assert.deepEqual(res.body, {
@@ -30,7 +30,7 @@ suite("Functional Tests", function () {
       chai
         .request(server)
         .keepOpen()
-        .get("/convert?input=32g")
+        .get("/api/convert?input=32g")
         .end(function (err, res) {
           assert.equal(res.text, "invalid unit");
           done();
@@ -40,7 +40,7 @@ suite("Functional Tests", function () {
       chai
         .request(server)
         .keepOpen()
-        .get("/convert?input=3/7.2/4kg")
+        .get("/api/convert?input=3/7.2/4kg")
         .end(function (err, res) {
           assert.equal(res.text, "invalid number");
           done();
@@ -50,7 +50,7 @@ suite("Functional Tests", function () {
       chai
         .request(server)
         .keepOpen()
-        .get("/convert?input=3/7.2/4kilomegagram")
+        .get("/api/convert?input=3/7.2/4kilomegagram")
         .end(function (err, res) {
           assert.equal(res.text, "invalid number and unit");
           done();
@@ -60,7 +60,7 @@ suite("Functional Tests", function () {
       chai
         .request(server)
         .keepOpen()
-        .get("/convert?input=kg")
+        .get("/api/convert?input=kg")
         .end(function (err, res) {
           assert.deepEqual(res.body, {
             initNum: 1,
