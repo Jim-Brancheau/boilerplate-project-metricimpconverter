@@ -16,11 +16,11 @@ module.exports = function (app) {
         initNum.toString().includes("Error:") &&
         initUnit.includes("Error:")
       ) {
-        res.type("txt").send(initNum + " " + initUnit);
+        res.type("txt").send("invalid number and unit");
       } else if (initNum.toString().includes("Error:")) {
-        res.type("txt").send(initNum);
+        res.type("txt").send("invalid number");
       } else if (initUnit.includes("Error:")) {
-        res.type("txt").send(initUnit);
+        res.type("txt").send("invalid unit");
       } else {
         data = {
           initNum: initNum,
